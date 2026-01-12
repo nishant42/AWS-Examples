@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+    echo "There need to be a bucket name"
+    exit 1
+fi
+
+aws s3api create-bucket --bucket "$1" --region us-east-1 --query "Location" --output text
+
+# below code if you are using any other region
+# #!/bin/bash
+# set -e
+# if [ -z "$1" ]; then
+#     echo "No bucket name provided. Usage: $0 bucket-name"
+#     exit 1
+# fi
+# BUCKET_NAME=$1
+# REGION=${2:-us-east-1}
+# aws s3api create-bucket --bucket "$BUCKET_NAME" --create-bucket-configuration LocationConstraint="$REGION"

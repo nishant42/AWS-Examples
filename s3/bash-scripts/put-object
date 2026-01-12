@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+echo "Syncing bucket: $1"
+set -e
+
+if [ -z "$1" ]; then
+    echo "There need to be a bucket name"
+    exit 1
+fi
+BUCKET_NAME=$1
+FILENAME=$2
+OBJECT_KEY=$(basename $FILENAME)
+
+aws s3api put-object --bucket $BUCKET_NAME --body $FILENAME --key $OBJECT_KEY
