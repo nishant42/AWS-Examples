@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo "Deleting CloudFormation stack..."
+STACK_NAME="s3-cfn-stack"
+aws cloudformation delete-stack --stack-name $STACK_NAME --region us-east-1

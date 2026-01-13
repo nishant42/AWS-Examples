@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+echo "Deploying CloudFormation stack..."
+STACK_NAME="s3-cfn-stack"
+# Get the directory where the script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+aws cloudformation deploy --template-file "$SCRIPT_DIR/template.yaml" --no-execute-change-set --region us-east-1 --stack-name $STACK_NAME --capabilities CAPABILITY_NAMED_IAM
